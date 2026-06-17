@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Công Việc Sự Kiện - Dewey THT</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Tô màu nền XANH LÁ NỔI BẬT cho ngày đã nhập nội dung */
+    .calendar-day.has-data { 
+      background-color: #22c55e !important; 
+      color: white !important;               
+      border-color: #16a34a !important;      
+    }
+    
+    /* Ngày đang được chọn (Active) sẽ có màu xanh dương đậm kèm viền kép */
+    .calendar-day.active { 
+      background-color: #1e3a8a !important; 
+      color: white !important; 
+      border-color: #1e3a8a !important;
+      font-weight: bold; 
+      box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1e3a8a; 
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans min-h-screen antialiased select-none">
+
+  <div id="main-screen" class="max-w-6xl mx-auto px-4 py-6 md:py-12">
+    <header class="text-center mb-8 md:mb-12">
+      <h1 class="text-2xl md:text-3xl font-black text-blue-900 tracking-tight uppercase px-2">Dự án The Dewey Schools Tây Hồ Tây</h1>
+      <p class="text-xs md:text-sm text-gray-500 mt-2 uppercase font-bold tracking-widest">Lịch sự công việc & sự kiện</p>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+      <div onclick="openContractor('An ninh')" class="bg-white p-5 md:p-6 rounded-2xl shadow-xs border border-slate-100 active:scale-98 md:hover:scale-102 transition cursor-pointer text-center flex flex-row sm:flex-col items-center gap-4 sm:gap-0">
+        <div class="w-14 h-14 sm:w-20 sm:h-20 bg-blue-50 rounded-2xl flex items-center justify-center sm:mx-auto sm:mb-4 shrink-0">
+          <svg class="w-7 h-7 sm:w-10 sm:h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        </div>
+        <div class="text-left sm:text-center">
+          <h3 class="font-bold text-base md:text-lg text-slate-900 uppercase">Nhà thầu An ninh</h3>
+          <p class="text-xs text-gray-400 mt-0.5">Bảo vệ KTC</p>
+        </div>
+      </div>
+
+      <div onclick="openContractor('Vệ sinh')" class="bg-white p-5 md:p-6 rounded-2xl shadow-xs border border-slate-100 active:scale-98 md:hover:scale-102 transition cursor-pointer text-center flex flex-row sm:flex-col items-center gap-4 sm:gap-0">
+        <div class="w-14 h-14 sm:w-20 sm:h-20 bg-green-50 rounded-2xl flex items-center justify-center sm:mx-auto sm:mb-4 shrink-0">
+          <svg class="w-7 h-7 sm:w-10 sm:h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+        </div>
+        <div class="text-left sm:text-center">
+          <h3 class="font-bold text-base md:text-lg text-slate-900 uppercase">Nhà thầu Vệ sinh</h3>
+          <p class="text-xs text-gray-400 mt-0.5">Pan Services</p>
+        </div>
+      </div>
+
+      <div onclick="openContractor('Cảnh quan')" class="bg-white p-5 md:p-6 rounded-2xl shadow-xs border border-slate-100 active:scale-98 md:hover:scale-102 transition cursor-pointer text-center flex flex-row sm:flex-col items-center gap-4 sm:gap-0">
+        <div class="w-14 h-14 sm:w-20 sm:h-20 bg-emerald-50 rounded-2xl flex items-center justify-center sm:mx-auto sm:mb-4 shrink-0">
+          <svg class="w-7 h-7 sm:w-10 sm:h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 6.364l.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        </div>
+        <div class="text-left sm:text-center">
+          <h3 class="font-bold text-base md:text-lg text-slate-900 uppercase">Nhà thầu Cảnh quan</h3>
+          <p class="text-xs text-gray-400 mt-0.5">Green Homes</p>
+        </div>
+      </div>
+
+      <div onclick="openContractor('Côn trùng')" class="bg-white p-5 md:p-6 rounded-2xl shadow-xs border border-slate-100 active:scale-98 md:hover:scale-102 transition cursor-pointer text-center flex flex-row sm:flex-col items-center gap-4 sm:gap-0">
+        <div class="w-14 h-14 sm:w-20 sm:h-20 bg-amber-50 rounded-2xl flex items-center justify-center sm:mx-auto sm:mb-4 shrink-0">
+          <svg class="w-7 h-7 sm:w-10 sm:h-10 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        </div>
+        <div class="text-left sm:text-center">
+          <h3 class="font-bold text-base md:text-lg text-slate-900 uppercase">Nhà thầu Côn trùng</h3>
+          <p class="text-xs text-gray-400 mt-0.5">Bio Smart</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="details-screen" class="max-w-6xl mx-auto px-2 py-4 md:px-4 md:py-6 hidden">
+    <button onclick="backToMain()" class="mb-4 ml-2 inline-flex items-center text-sm font-bold text-blue-900 bg-white py-2 px-4 rounded-xl shadow-xs border border-slate-200 active:bg-gray-100 transition">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      Danh sách nhà thầu
+    </button>
+
+    <div class="bg-white rounded-2xl md:rounded-3xl shadow-md overflow-hidden border border-slate-150">
+      <div class="bg-blue-900 p-4 md:p-6 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h2 id="display-contractor-name" class="text-lg md:text-xl font-black tracking-wide uppercase">TÊN NHÀ THẦU</h2>
+          <p class="text-blue-200 text-xs mt-0.5">Dự án: The Dewey Schools Tây Hồ Tây</p>
+        </div>
+        <div class="flex bg-blue-950 p-1 rounded-xl w-full sm:w-auto">
+          <button id="tab-phan-cong" onclick="switchTab('Phân công')" class="flex-1 sm:flex-none text-center px-4 py-2 rounded-lg font-bold text-xs md:text-sm transition">Phân công</button>
+          <button id="tab-ke-hoach" onclick="switchTab('Kế hoạch')" class="flex-1 sm:flex-none text-center px-4 py-2 rounded-lg font-bold text-xs md:text-sm transition">Kế hoạch</button>
+        </div>
+      </div>
+
+      <div class="p-3 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-7 flex flex-col gap-6">
+          <div class="bg-white p-3 md:p-4 rounded-xl border border-slate-100 shadow-2xs">
+            <div class="flex justify-between items-center mb-4">
+              <h3 id="calendar-month-year" class="font-extrabold text-sm md:text-base text-slate-800">Tháng --/----</h3>
+              <div class="flex space-x-1">
+                <button onclick="changeMonth(-1)" class="w-9 h-9 flex items-center justify-center bg-slate-100 active:bg-slate-200 rounded-lg text-sm font-bold">&lt;</button>
+                <button onclick="changeMonth(1)" class="w-9 h-9 flex items-center justify-center bg-slate-100 active:bg-slate-200 rounded-lg text-sm font-bold">&gt;</button>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-7 gap-1 text-center text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+              <div>CN</div><div>T2</div><div>T3</div><div>T4</div><div>T5</div><div>T6</div><div>T7</div>
+            </div>
+            <div id="calendar-grid" class="grid grid-cols-7 gap-1"></div>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <div class="flex items-center justify-between mb-3 border-b border-slate-200 pb-2">
+              <h4 class="font-extrabold text-xs md:text-sm text-slate-900 uppercase tracking-tight flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                Nội dung đã nhập trong tháng
+              </h4>
+              <span id="summary-count" class="text-[11px] bg-slate-200 px-2 py-0.5 rounded-full font-bold text-slate-600">...</span>
+            </div>
+            <div id="summary-list" class="space-y-2 max-h-64 overflow-y-auto pr-1 text-xs text-gray-500 italic">
+              Đang tải danh sách...
+            </div>
+          </div>
+        </div>
+
+        <div id="input-container" class="lg:col-span-5 bg-slate-50 p-4 md:p-6 rounded-xl border border-slate-200 flex flex-col justify-between gap-4">
+          <div>
+            <h3 class="font-black text-slate-900 text-sm md:text-base mb-0.5" id="info-box-title">Nội dung chi tiết</h3>
+            
+            <p class="text-xs text-blue-700 font-bold mb-3" id="selected-date-display">Vui lòng chọn một ngày trên lịch</p>
+            
+            <textarea id="work-content" rows="6" class="w-full p-3 md:p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent text-xs md:text-sm bg-white shadow-inner resize-none block disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed" placeholder="Bấm chọn một ngày trên lịch rồi điền nội dung vào đây..."></textarea>
+          </div>
+          
+          <div>
+            <button id="btn-save" onclick="handleSave()" disabled class="w-full bg-blue-900 text-white font-bold py-3 px-4 rounded-xl shadow-xs active:bg-blue-950 transition disabled:opacity-40 disabled:cursor-not-allowed text-xs md:text-sm">
+              <span id="btn-text">Lưu vào Google Sheet</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // ⚠️ THAY THẾ ĐƯỜNG LINK WEB APP CỦA BẠN VÀO ĐÂY:
+    // ==========================================
+    const API_URL = "https://script.google.com/macros/s/AKfycbyzowjBaQaeNyZdbNtDOkub4KFst3ILSo7ZoYzrnCkRSDqIsKjJzkfJ6TiDMqfPbJPF/exec"; 
+
+    let currentContractor = "";
+    let currentTab = "Phân công";
+    let activeDate = null; 
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth(); 
+    let monthDataCache = {}; 
+
+    function openContractor(name) {
+      currentContractor = name;
+      document.getElementById('main-screen').classList.add('hidden');
+      document.getElementById('details-screen').classList.remove('hidden');
+      document.getElementById('display-contractor-name').innerText = "NHÀ THẦU " + name.toUpperCase();
+      switchTab('Phân công');
+    }
+
+    function backToMain() {
+      document.getElementById('details-screen').classList.add('hidden');
+      document.getElementById('main-screen').classList.remove('hidden');
+    }
+
+    function switchTab(tabName) {
+      currentTab = tabName;
+      activeDate = null;
+      
+      const textarea = document.getElementById('work-content');
+      textarea.value = "";
+      textarea.disabled = false;
+
+      document.getElementById('btn-save').disabled = true;
+      document.getElementById('btn-text').innerText = "Lưu vào Google Sheet";
+      document.getElementById('selected-date-display').innerText = "Vui lòng chọn một ngày trên lịch";
+
+      const tabPC = document.getElementById('tab-phan-cong');
+      const tabKH = document.getElementById('tab-ke-hoach');
+
+      if (tabName === 'Phân công') {
+        tabPC.className = "px-4 py-2 rounded-lg font-bold text-xs md:text-sm bg-white text-blue-900 shadow-xs";
+        tabKH.className = "px-4 py-2 rounded-lg font-bold text-xs md:text-sm text-blue-200 hover:text-white";
+        document.getElementById('info-box-title').innerText = "Chi tiết Phân công Công việc";
+      } else {
+        tabKH.className = "px-4 py-2 rounded-lg font-bold text-xs md:text-sm bg-white text-blue-900 shadow-xs";
+        tabPC.className = "px-4 py-2 rounded-lg font-bold text-xs md:text-sm text-blue-200 hover:text-white";
+        document.getElementById('info-box-title').innerText = "Chi tiết Kế hoạch Công việc";
+      }
+      fetchMonthData();
+    }
+
+    function changeMonth(direction) {
+      currentMonth += direction;
+      if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+      if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+      fetchMonthData();
+    }
+
+    function fetchMonthData() {
+      renderCalendar();
+      document.getElementById('summary-list').innerHTML = "<div class='text-xs text-gray-400 py-2 text-center'>🔄 Đang đồng bộ từ Google Sheet...</div>";
+      document.getElementById('summary-count').innerText = "...";
+
+      // Sử dụng fetch thay vì google.script.run
+      const url = `${API_URL}?action=getMonthData&contractor=${encodeURIComponent(currentContractor)}&tab=${encodeURIComponent(currentTab)}&year=${currentYear}&month=${currentMonth + 1}`;
+
+      fetch(url, { redirect: "follow" })
+        .then(res => res.json())
+        .then(data => {
+          monthDataCache = data || {};
+          renderCalendar();     
+          renderSummaryList();  
+        })
+        .catch(err => {
+          document.getElementById('summary-list').innerHTML = `<div class='text-xs text-red-500 py-2 text-center'>⚠️ Lỗi kết nối: ${err.message}</div>`;
+        });
+    }
+
+    function renderCalendar() {
+      document.getElementById('calendar-month-year').innerText = `Tháng ${String(currentMonth + 1).padStart(2, '0')} / ${currentYear}`;
+      const grid = document.getElementById('calendar-grid');
+      grid.innerHTML = "";
+
+      const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+      const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+      for (let i = 0; i < firstDayIndex; i++) {
+        grid.appendChild(document.createElement('div'));
+      }
+
+      for (let day = 1; day <= totalDays; day++) {
+        const dayBtn = document.createElement('button');
+        const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        
+        dayBtn.innerText = day;
+        dayBtn.className = "calendar-day p-2 rounded-lg border border-slate-100 hover:bg-blue-50 text-xs md:text-sm font-bold text-slate-700 bg-white transition flex flex-col items-center justify-center h-10 md:h-12 relative shadow-2xs";
+        
+        if (monthDataCache[dateStr] && monthDataCache[dateStr].trim() !== "") {
+          dayBtn.classList.add('has-data');
+        }
+
+        if (activeDate === dateStr) {
+          dayBtn.classList.add('active');
+        }
+
+        dayBtn.onclick = () => selectDate(dateStr, dayBtn);
+        grid.appendChild(dayBtn);
+      }
+    }
+
+    function renderSummaryList() {
+      const summaryContainer = document.getElementById('summary-list');
+      summaryContainer.innerHTML = "";
+      
+      const sortedDates = Object.keys(monthDataCache)
+        .filter(date => monthDataCache[date] && monthDataCache[date].trim() !== "")
+        .sort();
+
+      document.getElementById('summary-count').innerText = `${sortedDates.length} ngày`;
+
+      if (sortedDates.length === 0) {
+        summaryContainer.innerHTML = `<div class='text-xs text-gray-400 py-3 text-center bg-white rounded-lg border border-dashed border-slate-200'>Chưa có nội dung nào được nhập.</div>`;
+        return;
+      }
+
+      sortedDates.forEach(dateStr => {
+        const parts = dateStr.split('-');
+        const displayDate = `${parts[2]}/${parts[1]}`; 
+        const contentText = monthDataCache[dateStr];
+
+        const itemDiv = document.createElement('div');
+        itemDiv.className = "p-3 bg-white border border-slate-200 rounded-xl shadow-2xs cursor-pointer hover:border-blue-400 active:bg-slate-100 transition text-xs flex flex-col gap-1";
+        itemDiv.onclick = () => {
+          activeDate = dateStr;
+          renderCalendar();
+          document.getElementById('work-content').value = contentText;
+          
+          checkLockState(dateStr);
+          
+          document.getElementById('input-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
+
+        itemDiv.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="font-black text-blue-900 bg-blue-50 px-2 py-0.5 rounded-md font-mono text-[11px]">Ngày ${displayDate}</span>
+            <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+          </div>
+          <p class="text-slate-700 font-medium whitespace-pre-line line-clamp-3 mt-1 leading-relaxed">${contentText}</p>
+        `;
+        summaryContainer.appendChild(itemDiv);
+      });
+    }
+
+    function selectDate(dateStr, element) {
+      activeDate = dateStr;
+      document.querySelectorAll('.calendar-day').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+
+      document.getElementById('work-content').value = monthDataCache[dateStr] || "";
+      
+      checkLockState(dateStr);
+
+      if (window.innerWidth < 1024) {
+        document.getElementById('input-container').scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }
+    }
+
+    function checkLockState(dateStr) {
+      const today = new Date();
+      const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+      
+      const textarea = document.getElementById('work-content');
+      const btn = document.getElementById('btn-save');
+      const btnText = document.getElementById('btn-text');
+      const dateDisplay = document.getElementById('selected-date-display');
+      
+      const parts = dateStr.split('-');
+      const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+
+      if (todayStr >= dateStr) {
+        textarea.disabled = true;
+        btn.disabled = true;
+        btnText.innerText = "Đã khóa (Quá hạn chỉnh sửa)";
+        dateDisplay.innerHTML = `Ngày đang chọn: ${formattedDate} <span class="text-red-500 font-black ml-2">🔒 BỊ KHÓA</span>`;
+      } else {
+        textarea.disabled = false;
+        btn.disabled = false;
+        btnText.innerText = "Lưu vào Google Sheet";
+        dateDisplay.innerText = `Ngày đang chọn: ${formattedDate}`;
+      }
+    }
+
+    function handleSave() {
+      if (!activeDate) return;
+      const content = document.getElementById('work-content').value;
+      const btnText = document.getElementById('btn-text');
+      const btn = document.getElementById('btn-save');
+      
+      btnText.innerText = "Đang lưu...";
+      btn.disabled = true;
+
+      const payload = {
+        action: "saveData",
+        contractor: currentContractor,
+        tab: currentTab,
+        dateStr: activeDate,
+        content: content
+      };
+
+      fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8', 
+        },
+        body: JSON.stringify(payload),
+        redirect: 'follow'
+      })
+      .then(res => res.json())
+      .then(response => {
+        if (response.success || response.status === "ok") {
+          // Cập nhật dữ liệu vào bộ nhớ tạm
+          monthDataCache[activeDate] = content;
+          
+          // Xóa sạch nội dung chữ
+          document.getElementById('work-content').value = "";
+          
+          // Bỏ trạng thái chọn
+          activeDate = null;
+          document.getElementById('selected-date-display').innerText = "Vui lòng chọn một ngày trên lịch";
+          
+          // Khôi phục trạng thái nút bấm
+          btnText.innerText = "Lưu vào Google Sheet";
+          btn.disabled = true;
+          
+          // Làm mới giao diện
+          renderCalendar();
+          renderSummaryList();
+          alert("Lưu thành công dữ liệu!");
+        } else {
+          throw new Error(response.error || "Lỗi không xác định từ máy chủ");
+        }
+      })
+      .catch(err => {
+        btnText.innerText = "Lưu vào Google Sheet";
+        btn.disabled = false;
+        alert("Lỗi lưu dữ liệu: " + err.message);
+      });
+    }
+  </script>
+</body>
+</html>
